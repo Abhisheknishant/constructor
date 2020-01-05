@@ -81,7 +81,7 @@ install:
       $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
     fi
   - $SUDO ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
-  - $SUDO source "$HOME"/miniconda/bin/activate
+  - source "$HOME"/miniconda/bin/activate
   # Install this package
   - $SUDO python setup.py develop
 
@@ -92,7 +92,7 @@ install:
   # diagnostics
   - conda info
   - conda init
-  - $SUDO source "$HOME"/miniconda/bin/activate
+  - source "$HOME"/miniconda/bin/activate
   - conda list
 
 script:
