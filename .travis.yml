@@ -57,11 +57,12 @@ install:
         $SUDO cp miniconda/bin/conda conda.exe;
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
+        - chmod +x conda.exe;
       fi
     else
       wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-osx-64.exe -O conda.exe;
+      - chmod +x conda.exe;
     fi
-  - chmod +x conda.exe
 
   - export CONDA_PKGS_DIRS="~/condacache/pkgs"
   - export CONDA_ALWAYS_YES="true"
