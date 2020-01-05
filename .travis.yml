@@ -15,6 +15,11 @@ matrix:
   include:
     # Linux
     - os: linux
+      arch: amd64
+      language: generic
+      env: PYTHON_VERSION=3.6 CONDA_VERSION=4.6
+    - os: linux
+      arch: arm64
       language: generic
       env: PYTHON_VERSION=3.6 CONDA_VERSION=4.6
     - os: linux
