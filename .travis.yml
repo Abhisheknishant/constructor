@@ -63,7 +63,7 @@ install:
       fi
     else
       wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-osx-64.exe -O conda.exe;
-      - chmod +x conda.exe;
+      chmod +x conda.exe;
     fi
 
   - export CONDA_PKGS_DIRS="~/condacache/pkgs"
@@ -75,7 +75,7 @@ install:
     else
       $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
     fi
-  - $SUDO./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
+  - $SUDO ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
   - source "$HOME"/miniconda/bin/activate
   # Install this package
   - python setup.py develop
