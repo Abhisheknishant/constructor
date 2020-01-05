@@ -54,6 +54,8 @@ install:
         chmod +x archiconda.sh;
         bash archiconda.sh -b -p miniconda;
         SUDO=sudo;
+        $SUDO chmod -R 777 miniconda/*
+        $SUDO cp -r miniconda/bin/* /usr/bin/;
         $SUDO cp miniconda/bin/conda conda.exe;
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
@@ -69,18 +71,18 @@ install:
   - export CONDA_AUTO_UPDATE_CONDA="false"
 
   - if [ "${CONDA_CANARY}" = "true" ]; then
-      ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=$PYTHON_VERSION;
+      $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=$PYTHON_VERSION;
     else
-      ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
+      $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
     fi
-  - ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
+  - $SUDO./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
   - source "$HOME"/miniconda/bin/activate
   # Install this package
   - python setup.py develop
 
   # this needs
   - mkdir $HOME/miniconda/standalone_conda
-  - cp conda.exe $HOME/miniconda/standalone_conda/conda.exe
+  - $SUDO cp conda.exe $HOME/miniconda/standalone_conda/conda.exe
 
   # diagnostics
   - conda info
