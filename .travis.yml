@@ -53,9 +53,9 @@ install:
         wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh;
         chmod +x conda.exe;
         chmod +x archiconda.sh;
-        bash archiconda.sh -b -p $HOME/miniconda
+        bash archiconda.sh -b -p $HOME/miniconda;
         SUDO=sudo;
-        $SUDO cp $HOME/miniconda/bin/conda.exe .
+        $SUDO cp $HOME/miniconda/bin/conda.exe .;
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
       fi
