@@ -11,13 +11,13 @@ env:
   global:
     - CONSTRUCTOR_CACHE=/tmp/constructor_travis_ci
     
-before_install:
-  - sudo apt-get install -y git wget libtiff-dev
-
 addons:
   apt:
     packages:
     - libpython3.7-dev
+    
+before_install:
+  - sudo apt-get install -y git wget libtiff-dev
 
 matrix:
   include:
