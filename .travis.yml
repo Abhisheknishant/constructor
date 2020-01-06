@@ -57,9 +57,9 @@ install:
         chmod +x archiconda.sh;
         bash archiconda.sh -b -p miniconda;
         SUDO=sudo;
-        $SUDO chmod -R 777 miniconda/*;
-        $SUDO cp -r miniconda/bin/* /usr/bin/;
-        $SUDO cp miniconda/bin/conda conda.exe;
+        $SUDO chmod -R 777 $HOME/miniconda/*;
+        $SUDO cp -r $HOME/miniconda/bin/* /usr/bin/;
+        $SUDO cp $HOME/miniconda/bin/conda conda.exe;
       else
         wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-latest-linux-64.exe -O conda.exe;
         chmod +x conda.exe;
@@ -83,7 +83,7 @@ install:
   - $SUDO ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
   - source "$HOME"/miniconda/bin/activate base
   # Install this package
-  - python setup.py develop
+  -  $SUDO python setup.py develop
 
   # this needs
   - $SUDO mkdir $HOME/miniconda/standalone_conda
