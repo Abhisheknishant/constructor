@@ -79,8 +79,8 @@ install:
   - export CONDA_PKGS_DIRS="~/condacache/pkgs"
   - export CONDA_ALWAYS_YES="true"
   - export CONDA_AUTO_UPDATE_CONDA="false"
-  - export LD_LIBRARY_PATH_64=$LD_LIBRARY_PATH:/usr/local/lib
-  - export LD_LIBRARY_PATH_64=$LD_LIBRARY_PATH:/usr/local/bin/python
+  - export LD_LIBRARY_PATH=/opt/python/3.7.5/lib/:$LD_LIBRARY_PATH;
+  - export PATH=/opt/conda/bin:$PATH;
 
   - if [ "$CONDA_CANARY" = "true" ]; then
       echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
