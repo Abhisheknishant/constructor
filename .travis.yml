@@ -10,9 +10,6 @@ branches:
 env:
   global:
     - CONSTRUCTOR_CACHE=/tmp/constructor_travis_ci
-    
-before_install:
-  - sudo apt-get install -y git wget libtiff-dev
 
 matrix:
   include:
@@ -57,7 +54,7 @@ install:
         chmod +x archiconda.sh;
         echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
         bash archiconda.sh -b -p /opt/conda/;
-        SUDO=sudo;
+        SUDO="";
         $SUDO chmod -R 777 /opt/conda/*;
         $SUDO cp -r /opt/conda/bin/* /usr/bin/;
         $SUDO cp /opt/conda/bin/conda conda.exe;
@@ -75,7 +72,7 @@ install:
   - export CONDA_ALWAYS_YES="true"
   - export CONDA_AUTO_UPDATE_CONDA="false"
   - UNAME_ARCH=$(uname -m)
-  - if [[ "$UNAME_ARCH" == "aarch64" ]]; then
+  - if [[ "$TRAVIS_CPU_ARCH" == "arm64" ]]; then
       export LD_LIBRARY_PATH=/opt/conda/lib/:$LD_LIBRARY_PATH;
       export PATH=/opt/conda/bin:$PATH;
     fi
@@ -90,7 +87,7 @@ install:
   - $SUDO ./conda.exe install -y pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
   - source /opt/conda/bin/activate test
   # Install this package
-  - sudo python setup.py develop
+  - python setup.py develop
 
   # this needs
   - $SUDO mkdir $HOME/miniconda/standalone_conda
