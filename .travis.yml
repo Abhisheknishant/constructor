@@ -77,7 +77,7 @@ install:
   - export LD_LIBRARY_PATH_64=$LD_LIBRARY_PATH:/usr/local/lib
   - export LD_LIBRARY_PATH_64=$LD_LIBRARY_PATH:/usr/local/bin/python
 
-  - if [ "${CONDA_CANARY}" = "true" ]; then
+  - if [ "$CONDA_CANARY" = "true" ]; then
       $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=$PYTHON_VERSION;
     else
       $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
