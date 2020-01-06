@@ -90,7 +90,7 @@ install:
   - $SUDO ./conda.exe install -y pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
   - source /opt/conda/bin/activate test
   # Install this package
-  - python setup.py develop
+  - sudo python setup.py develop
 
   # this needs
   - $SUDO mkdir $HOME/miniconda/standalone_conda
