@@ -88,7 +88,7 @@ install:
       $SUDO ./conda.exe create -y -q -n test conda=$CONDA_VERSION python=3.7;
     fi
   - $SUDO ./conda.exe install -y pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
-  - source "$HOME"/miniconda/bin/activate test
+  - source /opt/conda/bin/activate test
   # Install this package
   - python setup.py develop
 
