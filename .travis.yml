@@ -13,7 +13,11 @@ env:
     
 before_install:
   - sudo apt-get install -y git wget libtiff-dev
-  - sudo apt-get install git wget libpython3.7-dev
+
+addons:
+  apt:
+    packages:
+    - libpython3.7-dev
 
 matrix:
   include:
