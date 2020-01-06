@@ -56,10 +56,10 @@ install:
         wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh;
         chmod +x archiconda.sh;
         echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
-        bash archiconda.sh -b -p miniconda;
+        bash archiconda.sh -b -p /opt/conda/;
         SUDO=sudo;
-        $SUDO chmod -R 777 miniconda/*;
-        $SUDO cp -r miniconda/bin/* /usr/bin/;
+        $SUDO chmod -R 777 /opt/conda/*;
+        $SUDO cp -r /opt/conda/bin/* /usr/bin/;
         $SUDO cp miniconda/bin/conda conda.exe;
         $SUDO chmod +x conda.exe;
       else
