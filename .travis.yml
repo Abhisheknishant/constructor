@@ -83,8 +83,8 @@ install:
       echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
       $SUDO ./conda.exe create -y -q -n test conda-canary conda python=3.7;
     else
-      conda.exe config --add channels conda-canary;
-      conda.exe update conda;
+      ./conda.exe config --add channels conda-canary;
+      ./conda.exe update conda;
       $SUDO ./conda.exe create -y -q -n test conda=$CONDA_VERSION python=3.7;
     fi
   - $SUDO ./conda.exe install -y pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
