@@ -74,9 +74,11 @@ install:
   - export CONDA_PKGS_DIRS="~/condacache/pkgs"
   - export CONDA_ALWAYS_YES="true"
   - export CONDA_AUTO_UPDATE_CONDA="false"
-  - export LD_LIBRARY_PATH=/opt/python/3.7.5/lib/:$LD_LIBRARY_PATH;
-  - export PATH=/opt/conda/bin:$PATH;
-
+  - UNAME_ARCH=$(uname -m)
+  - if [[ "$UNAME_ARCH" == "aarch64" ]]; then
+      export LD_LIBRARY_PATH=/opt/python/3.7.5/lib/:$LD_LIBRARY_PATH;
+      export PATH=/opt/conda/bin:$PATH;
+    fi
   - if [ "$CONDA_CANARY" = "true" ]; then
       echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
       $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda python=$PYTHON_VERSION;
@@ -84,9 +86,9 @@ install:
       $SUDO ./conda.exe create -y -q -p ~/miniconda -c conda-canary conda=$CONDA_VERSION python=$PYTHON_VERSION;
     fi
   - $SUDO ./conda.exe install -y -p ~/miniconda pillow>=3.1 ruamel_yaml conda-forge::codecov pytest pytest-cov
-  - source "$HOME"/miniconda/bin/activate base
+  - source "$HOME"/miniconda/bin/activate
   # Install this package
-  -  $SUDO python setup.py develop
+  - $SUDO python setup.py develop
 
   # this needs
   - $SUDO mkdir $HOME/miniconda/standalone_conda
