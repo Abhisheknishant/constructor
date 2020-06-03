@@ -2,7 +2,9 @@
 
 language: python
 sudo: false
-
+arch:
+    - amd64
+    - arm64
 branches:
   only:
     - master
@@ -27,19 +29,16 @@ matrix:
       language: generic
       env: PYTHON_VERSION=2.7 CONDA_CANARY=true
     - os: linux
-      language: generic
-      env: PYTHON_VERSION=3.7 CONDA_CANARY=true
-    # OSX
-    - os: osx
-      language: generic
-      env: PYTHON_VERSION=3.6 CONDA_VERSION=4.7
-  allow_failures:
-    - os: linux
-      language: generic
-      env: PYTHON_VERSION=3.7 CONDA_CANARY=true
-    - os: linux
+      arch: arm64
       language: generic
       env: PYTHON_VERSION=2.7 CONDA_CANARY=true
+    - os: linux
+      language: generic
+      env: PYTHON_VERSION=3.7 CONDA_CANARY=true
+    - os: linux
+      arch: arm64
+      language: generic
+      env: PYTHON_VERSION=3.7 CONDA_CANARY=true
 
 cache:
   directories:
